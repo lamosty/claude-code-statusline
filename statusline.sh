@@ -33,7 +33,7 @@ RESET="\033[0m"
 DIM="\033[2m"
 
 if [[ "$CTX_TOKENS" =~ ^[0-9]+$ ]] && [[ "$CTX_TOKENS" -gt 0 ]]; then
-  CTX_K=$(awk "BEGIN {printf \"%.1f\", $CTX_TOKENS / 1000}")
+  CTX_K=$(LC_NUMERIC=C awk "BEGIN {printf \"%.1f\", $CTX_TOKENS / 1000}")
   USED_INT=${USED_PCT%.*}
   USED_INT=${USED_INT:-0}
   if [[ "$USED_INT" -gt 80 ]]; then
